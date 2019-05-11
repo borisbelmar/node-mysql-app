@@ -1,0 +1,22 @@
+.add-btn {
+    margin-top: 0.75rem;
+}
+
+.timeago {
+    margin-top: 0.25rem;
+}
+
+#message {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+#message .success-message {
+    position: relative;
+    top: 40%;
+}
