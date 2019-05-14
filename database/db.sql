@@ -4,12 +4,11 @@ USE database_links;
 
 -- USERS TABLE
 CREATE TABLE users (
-    id INT AUTO_INCREMENT NOT NULL,
-    username VARCHAR(20) NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(60) NOT NULL,
     nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    PRIMARY KEY(id, username)
+    apellido VARCHAR(50) NOT NULL
 );
 
 DESCRIBE users;
