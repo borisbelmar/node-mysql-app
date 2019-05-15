@@ -1,3 +1,5 @@
+// Cerrar Mensajes
+
 const close = (element) => {
     var op = 1;  // initial opacity
     var timer = setInterval(function () {
@@ -15,3 +17,30 @@ const closeMessage = () => {
     let message = document.getElementById("message");
     close(message);
 };
+
+// Validadores
+// Optimizar con Childrens!
+
+let username = {
+    label: document.getElementById("usernameLabel"),
+    input: document.getElementById("usernameInput"),
+    help: document.getElementById("usernameHelp"),
+    validate: false
+};
+
+let password = {
+    label: document.getElementById("usernameLabel"),
+    input: document.getElementById("usernameInput"),
+    help: document.getElementById("usernameHelp"),
+    validate: false
+};
+
+const validateUser = () => {
+    console.log(username.input.value);
+};
+
+const validatePassword = () => {
+
+};
+
+username.input.addEventListener("focusout", validateUser);

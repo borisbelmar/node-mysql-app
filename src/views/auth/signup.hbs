@@ -10,34 +10,44 @@
                             <label class="label">First Name</label>
                             <div class="control">
                                 <input type="text" class="input" name="nombre" required autofocus>
+                                <p class="help is-danger">This field is required</p>
                             </div>
                         </div>
                         <div class="field">
                             <label class="label">Last Name</label>
                             <div class="control">
                                 <input type="text" class="input" name="apellido" required>
+                                <p class="help is-danger">This field is required</p>
                             </div>
                         </div>
                         <hr>
                         <div class="field">
-                            <label class="label">Username</label>
+                            <label id="usernameLabel" class="label">Username</label>
                             <div class="control">
-                                <input type="text" class="input" name="username" required>
+                                <input id="usernameInput" type="text" class="input" name="username" required>
+                                <p id="usernameHelp" class="help is-danger">This field is required</p>
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Password</label>
+                            <label id="passwordLabel" class="label">Password</label>
                             <div class="control">
-                                <input type="password" class="input" name="password" required>
+                                <input id="passwordInput" type="password" class="input" name="password" required>
+                                <p id="passwordHelp" class="help is-danger">This field is required</p>
                             </div>
                         </div>
-                        
+                        <div class="field">
+                            <label id="repasswordLabel" class="label">Confirm your Password</label>
+                            <div class="control">
+                                <input id="repasswordInput" type="password" class="input" name="repassword" required>
+                                <p id="repasswordHelp" class="help is-danger">This field is required</p>
+                            </div>
+                        </div>
                         <div class="field">
                             <div class="control">
                                 <button class="button is-primary is-fullwidth">
                                     Sign Up
                                 </button>
-                            </div>   
+                            </div> 
                         </div>
                     </form>
                 </div>
