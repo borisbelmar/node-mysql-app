@@ -35,45 +35,86 @@ class inputFields {
 }
 
 let nombre = new inputFields("nombre");
+let apellido = new inputFields("apellido");
+let username = new inputFields("username");
+let password = new inputFields("password");
+let repassword = new inputFields("repassword");
+
+/* const validateElement = (element) => {
+    const validar = () => {
+        let help = element.help;
+        let input = element.input;
+        let value = input.value;
+        let textOnly = /^[A-Za-zÑñ ]*$/;
+        if(textOnly.test(value) && value != null && value != "") {
+            // Success
+            console.log("Success");
+            help.classList.add("is-hidden");
+            help.classList.remove("is-danger");
+            help.classList.add("is-success");
+            input.classList.add("is-success");
+            input.classList.remove("is-danger");
+        } else {
+            // Fail
+            console.log("Failure")
+            console.log(value);
+            help.classList.remove("is-hidden");
+            help.classList.add("is-danger");
+            help.classList.remove("is-success");
+            input.classList.remove("is-success");
+            input.classList.add("is-danger");
+            if(!textOnly.test(value)) {
+                help.innerHTML = "Invalid name";
+            } else if(value == null || value == "") {
+                help.innerHTML = "The name field is required";
+            }
+        }
+    };
+    const romper = () => {
+        input.removeEventListener("keyup", validar);
+    };
+    input.addEventListener("keyup", validar);
+    input.addEventListener("focusout", romper);
+};
+
+nombre.input.addEventListener("focus", validateElement("nombre"));
+*/
 
 // Un Experimento 
 
 const validateNombre = () => {
     const validar = () => {
-        console.log(nombre.value);
+        let value = nombre.input.value;
+        let textOnly = /^[A-Za-zÑñ ]*$/;
+        if(textOnly.test(value) && value != null && value != "") {
+            // Success
+            console.log("Success");
+            nombre.help.classList.add("is-hidden");
+            nombre.help.classList.remove("is-danger");
+            nombre.help.classList.add("is-success");
+            nombre.input.classList.add("is-success");
+            nombre.input.classList.remove("is-danger");
+        } else {
+            // Fail
+            console.log("Failure")
+            nombre.help.classList.remove("is-hidden");
+            nombre.help.classList.add("is-danger");
+            nombre.help.classList.remove("is-success");
+            nombre.input.classList.remove("is-success");
+            nombre.input.classList.add("is-danger");
+            if(!textOnly.test(value)) {
+                nombre.help.innerHTML = "Invalid name";
+            } else if(value == null || value == "") {
+                nombre.help.innerHTML = "The name field is required";
+            }
+        }
     };
     const romper = () => {
-        nombre.input.removeEventListener("keypress");
+        nombre.input.removeEventListener("keyup", validar);
     };
-    nombre.input.addEventListener("keypress", validar);
-    nombre.input.addEventListener("onfocusout", romper);
+    nombre.input.addEventListener("keyup", validar);
+    nombre.input.addEventListener("focusout", romper);
 };
 
 nombre.input.addEventListener("focus", validateNombre);
 
-let apellido = new inputFields("apellido");
-
-const validateApellido = () => {
-    let validar = () => {
-        console.log(apellido.value);  
-    };
-};
-
-apellido.input.addEventListener("focusout", validateApellido);
-
-let username = new inputFields("username");
-
-const validateUsername = () => {
-    console.log(username.value);
-};
-
-username.input.addEventListener("focusout", validateUsername);
-
-let password = new inputFields("password");
-let repassword = new inputFields("repassword");
-
-const validatePassword = () => {
-    console.log(password.value);
-};
-
-password.input.addEventListener("focusout", validatePassword);
