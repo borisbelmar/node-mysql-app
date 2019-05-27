@@ -40,44 +40,50 @@ let username = new inputFields("username");
 let password = new inputFields("password");
 let repassword = new inputFields("repassword");
 
-/* const validateElement = (element) => {
-    const validar = () => {
-        let help = element.help;
-        let input = element.input;
-        let value = input.value;
-        let textOnly = /^[A-Za-zÑñ ]*$/;
-        if(textOnly.test(value) && value != null && value != "") {
-            // Success
-            console.log("Success");
-            help.classList.add("is-hidden");
-            help.classList.remove("is-danger");
-            help.classList.add("is-success");
-            input.classList.add("is-success");
-            input.classList.remove("is-danger");
-        } else {
-            // Fail
-            console.log("Failure")
-            console.log(value);
-            help.classList.remove("is-hidden");
-            help.classList.add("is-danger");
-            help.classList.remove("is-success");
-            input.classList.remove("is-success");
-            input.classList.add("is-danger");
-            if(!textOnly.test(value)) {
-                help.innerHTML = "Invalid name";
-            } else if(value == null || value == "") {
-                help.innerHTML = "The name field is required";
-            }
+/*
+const validar = (element) => {
+    console.log(element);
+    let value = element.value;
+    let help = element.help;
+    let input = element.input;
+    let textOnly = /^[A-Za-zÑñ ]*$/;
+    if(textOnly.test(value) && value != null && value != "") {
+        // Success
+        console.log("Success");
+        help.classList.add("is-hidden");
+        help.classList.remove("is-danger");
+        help.classList.add("is-success");
+        input.classList.add("is-success");
+        input.classList.remove("is-danger");
+    } else {
+        // Fail
+        console.log("Failure");
+        console.log(value);
+        help.classList.remove("is-hidden");
+        help.classList.add("is-danger");
+        help.classList.remove("is-success");
+        input.classList.remove("is-success");
+        input.classList.add("is-danger");
+        if(!textOnly.test(value)) {
+            help.innerHTML = "Invalid name";
+        } else if(value == null || value == "") {
+            help.innerHTML = "The name field is required";
         }
-    };
-    const romper = () => {
-        input.removeEventListener("keyup", validar);
-    };
-    input.addEventListener("keyup", validar);
-    input.addEventListener("focusout", romper);
+    }
 };
 
-nombre.input.addEventListener("focus", validateElement("nombre"));
+const validateElement = (element) => {
+    console.log("Script funcionando");
+    console.log(element);
+    validar(nombre);
+    const romper = () => {
+        element.input.removeEventListener("click", validar);
+    };
+    element.input.addEventListener("click", validar);
+    element.input.addEventListener("focusout", romper);
+};
+
+nombre.input.addEventListener("focus", validateElement(nombre));
 */
 
 // Un Experimento 
@@ -96,7 +102,7 @@ const validateNombre = () => {
             nombre.input.classList.remove("is-danger");
         } else {
             // Fail
-            console.log("Failure")
+            console.log("Failure");
             nombre.help.classList.remove("is-hidden");
             nombre.help.classList.add("is-danger");
             nombre.help.classList.remove("is-success");
@@ -117,4 +123,3 @@ const validateNombre = () => {
 };
 
 nombre.input.addEventListener("focus", validateNombre);
-
