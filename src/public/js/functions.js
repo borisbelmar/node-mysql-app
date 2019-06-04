@@ -79,44 +79,6 @@ let repassword = new inputFields("repassword");
 
 // Validar Nombre
 
-// const validateNombre = () => {
-//     const validar = () => {
-//         let value = nombre.input.value;
-//         let textOnly = /^[A-Za-zÑñ ]*$/;
-//         if(textOnly.test(value) && value != null && value != "") {
-//             // Success
-//             console.log("Success");
-//             nombre.help.classList.add("is-hidden");
-//             nombre.help.classList.remove("is-danger");
-//             nombre.help.classList.add("is-success");
-//             nombre.input.classList.add("is-success");
-//             nombre.input.classList.remove("is-danger");
-//         } else {
-//             // Fail
-//             console.log("Failure");
-//             nombre.help.classList.remove("is-hidden");
-//             nombre.help.classList.add("is-danger");
-//             nombre.help.classList.remove("is-success");
-//             nombre.input.classList.remove("is-success");
-//             nombre.input.classList.add("is-danger");
-//             if(!textOnly.test(value)) {
-//                 nombre.help.innerHTML = "Invalid name";
-//             } else if(value == null || value == "") {
-//                 nombre.help.innerHTML = "The name field is required";
-//             }
-//         }
-//     };
-//     const romper = () => {
-//         nombre.input.removeEventListener("keyup", validar);
-//     };
-//     nombre.input.addEventListener("keyup", validar);
-//     nombre.input.addEventListener("focusout", romper);
-// };
-
-// nombre.input.addEventListener("focus", validateNombre);
-
-// Validar Nombre
-
 const validateNombre = () => {
     let textOnly = /^[A-Za-zÑñ ]*$/;
     const element = nombre;
