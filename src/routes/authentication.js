@@ -19,10 +19,17 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 // Login Routes
 
-router.get('/login', (req, res) => {
-    res.render('auth/login');
+router.get('/signin', (req, res) => {
+    res.render('auth/signin');
 });
 
+router.post('/signin', (req, res, next) => {
+    passport.authenticate('local.signin', {
+        successRedirect: '/profile',
+        failureRedirect: '/signin',
+        failureFlash: true
+    })(req, res, next);
+});
 // Profile Route
 
 router.get('/profile', (req, res) => {

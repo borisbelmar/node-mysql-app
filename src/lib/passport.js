@@ -5,6 +5,27 @@ const pool = require('../database');
 
 const helpers = require('../lib/helpers');
 
+// Función de Login Passport
+passport.use('local.signin', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, username, password, done) => {
+    const rows = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+    if (rows.length > 0) {
+        const user = rows[0];
+        const validPassword = await helpers.matchPassword(password, user.password);
+        if(validPassword) {
+            done(null, user, req.flash('success', 'Welcome ' + user.username));
+        } else {
+            done(null, false, req.flash('failure', 'Incorrect Password'));
+        }
+    } else {
+        return done(null, false, req.flash('failure', 'The username doesnt exists'));
+    }
+}));
+
+// Función de Registro con Passport
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
