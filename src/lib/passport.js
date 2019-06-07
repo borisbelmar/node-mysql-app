@@ -31,21 +31,27 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true 
 }, async(req, username, password, done) => {
-    const { nombre, apellido } = req.body;
-    const newUser = {
-        username,
-        password,
-        nombre,
-        apellido
-    };
-    newUser.password = await helpers.encryptPassword(password);
+    const rows = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+    // Verificamos si el usuario existe
+    if (rows.length == 0) {
+        const { nombre, apellido } = req.body;
+        const newUser = {
+            username,
+            password,
+            nombre,
+            apellido
+        };
+        newUser.password = await helpers.encryptPassword(password);
+
+        const result = await pool.query('INSERT INTO users SET ?', [newUser]);
     
-    const result = await pool.query('INSERT INTO users SET ?', [newUser]);
-
-    newUser.id = result.insertId;
-
-    // Terminamos y lo almacenamos en una sesión
-    return done(null, newUser);
+        newUser.id = result.insertId;
+    
+        // Terminamos y lo almacenamos en una sesión
+        return done(null, newUser);
+    } else {
+        return done(null, false, req.flash('failure', `El nombre de usuario ${username} ya existe.`));
+    }
 }));
 
 // Guarda el usuario dentro de la sesión

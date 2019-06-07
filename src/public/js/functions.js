@@ -33,8 +33,8 @@ class inputFields {
         this.status = 1;
         this.value = "";
     }
-    setValue() {
-        this.value = this.input.value;
+    setValue(value) {
+        this.value = value || this.input.value;
     }
     getValue() {
         return this.value;
@@ -42,7 +42,6 @@ class inputFields {
     validar(regex) {
         this.setValue();
         let value = this.getValue();
-        console.log(this);
         if(regex.test(value) && value != null && value != "") {
             // Success
             this.help.classList.add("is-hidden");
@@ -64,6 +63,31 @@ class inputFields {
                 this.status = 1;
             } else if(value == null || value == "") {
                 this.status = 2;
+            }
+        }
+    }
+    validarPassword(password) {
+        this.setValue();
+        let value = this.getValue();
+        if(value == password) {
+            // Success
+            this.help.classList.add("is-hidden");
+            this.help.classList.remove("is-danger");
+            this.help.classList.add("is-success");
+            this.input.classList.add("is-success");
+            this.input.classList.remove("is-danger");
+            this.status = 0;
+            this.validate = true;
+        } else {
+            // Fail
+            this.help.classList.remove("is-hidden");
+            this.help.classList.add("is-danger");
+            this.help.classList.remove("is-success");
+            this.input.classList.remove("is-success");
+            this.input.classList.add("is-danger");
+            this.validate = false; 
+            if (value == null || value == "") {
+                this.status = 1;
             }
         }
     }
@@ -104,7 +128,7 @@ nombre.input.addEventListener("focus", validateNombre);
 const validateApellido = () => {
     let textOnly = /^[A-Za-zÑñ ]*$/;
     const element = apellido;
-    const validando = () => { 
+    const validando = () => {
         element.validar(textOnly);
         if (element.status == 1) {
             element.help.innerHTML = "Apellido inválido";
@@ -124,10 +148,11 @@ apellido.input.addEventListener("focus", validateApellido);
 // Validar User
 
 const validateUsername = () => {
-    let textOnly = /^[0-9a-z]*$/;
+    let textOnly = /^[0-9a-zA-Z]*$/;
     const element = username;
-    const validando = () => { 
-        element.validar(textOnly);
+    const validando = () => {
+        element.setValue(element.getValue().toLowerCase);
+        element.validar(textOnly); 
         if (element.status == 1) {
             element.help.innerHTML = "Invalid Username";
         } else {
@@ -142,3 +167,46 @@ const validateUsername = () => {
 };
 
 username.input.addEventListener("focus", validateUsername);
+
+// Validar Password
+
+const validatePassword = () => {
+    let noSpaces = /^[^ ]*$/;
+    const element = password;
+    const validando = () => { 
+        element.validar(noSpaces);
+        if (element.status == 1) {
+            element.help.innerHTML = "Invalid Password";
+        } else {
+            element.help.innerHTML = "This field cannot be empty";
+        }
+    };
+    const romper = () => {
+        element.input.removeEventListener("keyup", validando);
+    };
+    element.input.addEventListener("keyup", validando);
+    element.input.addEventListener("focusout", romper);
+};
+
+password.input.addEventListener("focus", validatePassword);
+
+// Validar RePassword
+
+const validateRepassword = () => {
+    let pass = password.getValue();
+    let rePass = repassword.getValue();
+    const element = repassword;
+    const validando = () => { 
+        element.validarPassword(pass);
+        if (pass != rePass) {
+            element.help.innerHTML = "Las contraseñas no coinciden";
+        }
+    };
+    const romper = () => {
+        element.input.removeEventListener("keyup", validando);
+    };
+    element.input.addEventListener("keyup", validando);
+    element.input.addEventListener("focusout", romper);
+};
+
+repassword.input.addEventListener("focus", validateRepassword);
