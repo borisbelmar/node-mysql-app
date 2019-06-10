@@ -4,7 +4,7 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         } else {
-            return res.redirect('/signin');
+            return res.redirect('/');
         }
     },
 
@@ -12,7 +12,7 @@ module.exports = {
         if (!req.isAuthenticated()) {
             return next();
         } else {
-            return res.redirect('/profile');
+            return res.redirect('/');
         }
     }
 

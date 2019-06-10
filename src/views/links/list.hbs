@@ -6,42 +6,55 @@
                     Links
                 </h1>
                 <h4 class="subtitle is-size-5">
-                    All my saved links
+                    Todos mis links guardados
                 </h4>
                 <a href="/links/add" class="button is-primary">
-                    Add a new link
+                    Agregar un nuevo link
                 </a>
             </div>
         </div>
+        {{#if links}}
         <div class="columns is-multiline">
             {{#each links}}
-                <div class="column is-one-third">
-                    <div class="box">
-                        <a href="{{url}}" target="_blank">
-                            <h3 class="title is-size-4">
-                                {{title}}
-                            </h3>
+            <div class="column is-one-third">
+                <div class="box">
+                    <a href="{{url}}" target="_blank">
+                        <h3 class="title is-size-4">
+                            {{title}}
+                        </h3>
+                    </a>
+                    <p>{{description}}</p>
+                    <p class="is-size-7" class="timeago">{{timeago created_at}}</p>
+                    <div class="add-btn">
+                        <a href="/links/delete/{{id}}" class="button is-danger">
+                            Eliminar
                         </a>
-                        <p>{{description}}</p>
-                        <p class="is-size-7" class="timeago">{{timeago created_at}}</p>
-                        <div class="add-btn">
-                            <a href="/links/delete/{{id}}" class="button is-danger">
-                                Delete
-                            </a>
-                            <a href="/links/edit/{{id}}" class="button is-text">
-                                Edit
-                            </a>
-                        </div>
+                        <a href="/links/edit/{{id}}" class="button is-text">
+                            Editar
+                        </a>
                     </div>
                 </div>
-            {{else}}
-                <div class="column is-one-third has-text-centered is-offset-one-third">
-                    <div class="box">
-                        <h3 class="is-size-3">Hey, this is empty.</h3>
-                        <p class="is-size-5">Save a new link <a href="/links/add/">here</a>.</p>
-                    </div>
-                </div>
+            </div>
             {{/each}}
         </div>
+        {{else}}
+        <div class="section">
+            <div class="columns">
+                <div class="column is-one-third is-offset-one-third has-text-centered">
+                    <h3 class="is-size-3">Vaya, esto se ve vacío.</h3>
+                    <p class="is-size-5">Agrega un nuevo link <a href="/links/add/">aquí</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="columns">
+                <div class="column is-one-third is-offset-one-third">
+                    <figure class="image">
+                        <img src="/img/empty.svg">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        {{/if}}
     </div>
 </section>

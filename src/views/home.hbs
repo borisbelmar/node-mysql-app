@@ -1,9 +1,30 @@
-<section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <h1 class="is-size-2">Link App</h1>
-                <p class="is-size-6">You loved it, you saved it!</p>
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-half">
+                    <h1 class="title"><strong>Un solo lugar para tus links</strong></h1>
+                    <h2 class="subtitle">Guardalos y consultalos en un solo lugar!</h2>
+                    <div class="field is-grouped">
+                        {{#if user}}
+                        <div class="control">
+                            <a href="/links" class="button is-primary">Ir a mis links</a>
+                        </div>
+                        {{else}}
+                        <div class="control">
+                            <a href="/signup" class="button is-primary">Regístrate</a>
+                        </div>
+                        <div class="control">
+                            <a href="/signin" class="button">Ingresa</a>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="column">
+                    <figure class="image">
+                        <img src="/img/home.svg">
+                    </figure>
+                </div>
             </div>
         </div>
     </div>

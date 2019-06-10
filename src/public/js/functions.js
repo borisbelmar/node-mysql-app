@@ -111,7 +111,7 @@ const validateNombre = () => {
         if (element.status == 1) {
             element.help.innerHTML = "Nombre inválido";
         } else {
-            element.help.innerHTML = "This field cannot be empty";
+            element.help.innerHTML = "El campo no puede estar vacío";
         }
     };
     const romper = () => {
@@ -133,7 +133,7 @@ const validateApellido = () => {
         if (element.status == 1) {
             element.help.innerHTML = "Apellido inválido";
         } else {
-            element.help.innerHTML = "This field cannot be empty";
+            element.help.innerHTML = "El campo no puede estar vacío";
         }
     };
     const romper = () => {
@@ -154,9 +154,9 @@ const validateUsername = () => {
         element.setValue(element.getValue().toLowerCase);
         element.validar(textOnly); 
         if (element.status == 1) {
-            element.help.innerHTML = "Invalid Username";
+            element.help.innerHTML = "Usuario inválido";
         } else {
-            element.help.innerHTML = "This field cannot be empty";
+            element.help.innerHTML = "El campo no puede estar vacío";
         }
     };
     const romper = () => {
@@ -176,9 +176,9 @@ const validatePassword = () => {
     const validando = () => { 
         element.validar(noSpaces);
         if (element.status == 1) {
-            element.help.innerHTML = "Invalid Password";
+            element.help.innerHTML = "Contraseña inválida";
         } else {
-            element.help.innerHTML = "This field cannot be empty";
+            element.help.innerHTML = "El campo no puede estar vacío";
         }
     };
     const romper = () => {

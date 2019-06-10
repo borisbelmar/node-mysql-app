@@ -3,11 +3,11 @@
         <div class="columns">
             <div class="column is-one-third is-offset-one-third">
                 <div class="box">
-                    <h2 class="title is-size-4 has-text-centered">Save a new link</h2>
+                    <h2 class="title is-size-4 has-text-centered">Guarda un nuevo link</h2>
                     <hr>
                     <form action="/links/add" method="POST"> 
                         <div class="field">
-                            <label class="label">Title*</label>
+                            <label class="label">Título*</label>
                             <div class="control">
                                 <input type="text" class="input" name="title" placeholder="Write a title" required autofocus>
                             </div>
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Description</label>
+                            <label class="label">Descripción</label>
                             <div class="control">
                                 <textarea class="textarea" name="description" rows="2" placeholder="Write a description"></textarea>
                             </div>
@@ -27,11 +27,18 @@
                         <div class="field">
                             <div class="control">
                                 <button class="button is-primary is-fullwidth">
-                                    Save
+                                    Guardar
                                 </button>
-                            </div>   
+                            </div>
                         </div>
                     </form>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <a href="/links" class="button is-white is-fullwidth">
+                            Volver
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
